@@ -243,7 +243,16 @@ MASTER_TL.addPause('FLAME_ON', () => SOUNDS.MATCH.play());
 MASTER_TL.addPause('LIGHTS_OUT', () => SOUNDS.TUNE.play());
 BTN.addEventListener('click', () => {
   BTN.setAttribute('disabled', true);
-  MASTER_TL.restart();
+  MASTER_TL.restart(); // mulai animasi birthday cake
+
+  setTimeout(() => {
+    document.body.classList.add('slide-up');
+    setTimeout(() => {
+      // Simpan tanda bahwa user datang dari halaman awal
+      sessionStorage.setItem("fromIndex", "true");
+      window.location.href = "halaman2.html";
+    }, 1000);
+  }, 23000);
 });
 
 SOUNDS.TUNE.muted = SOUNDS.MATCH.muted = SOUNDS.HORN.muted = SOUNDS.POP.muted = SOUNDS.CHEER.muted = SOUNDS.BLOW.muted = SOUNDS.ON.muted = true;
@@ -254,4 +263,6 @@ const toggleAudio = () => {
 };
 
 document.querySelector('#volume').addEventListener('input', toggleAudio);
+
+
 
